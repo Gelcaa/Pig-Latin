@@ -1,21 +1,24 @@
-org: gelca
-app: trial-1
-service: pig-latin
-frameworkVersion: "3"
+service: sls-offline
 
 provider:
   name: aws
   runtime: nodejs18.x
 
 functions:
-  app:
-    handler: index.handler
+  randomSentence:
+    handler: handlers/randomSentence.generate
     events:
       - http:
           path: random-sentence
           method: get
+          cors: true
+  translate:
+    handler: handlers/translate.generate
+    events:
       - http:
           path: translate
           method: post
+          cors: true
+
 plugins:
   - serverless-offline

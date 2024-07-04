@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "offline": "sls offline",
+    "test": "npx mocha"
   },
   "keywords": [],
   "author": "",
