@@ -2,6 +2,8 @@ import express from 'express';
 import RS from 'random-words-and-sentences';
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { pigLatin } from './pigLatin.js';
+
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -27,21 +29,6 @@ app.post('/translate', (req, res) => {
     const translatedText = inputText.toLowerCase().split(' ').map(inputTranslated => pigLatin(inputTranslated)).join(' ');
     res.json({ translatedText });
 });
-
-//pig-latin logic
-function pigLatin(inputTranslated) {
-    const vowels = ["a", "e", "i", "o", "u"];
-
-    if (vowels.includes(inputTranslated[0])) {
-        return inputTranslated + 'yay';
-    } else {
-        for (let i = 0; i < inputTranslated.length; i++) {
-            if (vowels.includes(inputTranslated[i])) {
-                return inputTranslated.slice(i) + inputTranslated.slice(0, i) + 'ay';
-            }
-        }
-    }
-}
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
