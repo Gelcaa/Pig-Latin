@@ -1,0 +1,16 @@
+
+{
+   "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "text": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z ]*$"
+        }
+    },
+    "required": [
+        "text"
+    ]
+}

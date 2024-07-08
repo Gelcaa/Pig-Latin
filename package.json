@@ -7,16 +7,19 @@
   "scripts": {
     "start": "node index.js",
     "offline": "sls offline",
-    "test": "npx mocha"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajv": "^8.16.0",
+    "ajv-draft-04": "^1.0.0",
     "express": "^4.19.2",
     "random-words-and-sentences": "^1.1.1"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "serverless-offline": "^13.6.0"
   }
 }
