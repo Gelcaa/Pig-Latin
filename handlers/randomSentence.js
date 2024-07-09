@@ -1,8 +1,8 @@
 'use strict';
 
-import RS from 'random-words-and-sentences';
+const RS = require('random-words-and-sentences');
 
-export const generate = async (event) => {
+module.exports.generate = async (event) => {
     const randomSentence = RS.getRandomSentence();
     return {
         statusCode: 200,

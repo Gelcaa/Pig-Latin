@@ -1,6 +1,6 @@
-import { pigLatin } from '../pigLatin.js';
+const { pigLatin } = require('../pigLatin');
 
-export const generate = async (event) => {
+module.exports.generate = async (event) => {
     const inputText = JSON.parse(event.body).text;
     const translatedText = inputText.toLowerCase().split(' ').map(inputTranslated => pigLatin(inputTranslated)).join(' ');
 

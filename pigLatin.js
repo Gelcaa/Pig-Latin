@@ -1,4 +1,4 @@
-export function pigLatin(inputTranslated) {
+function pigLatin(inputTranslated) {
     const vowels = ["a", "e", "i", "o", "u"];
 
     if (vowels.includes(inputTranslated[0])) {
@@ -11,4 +11,6 @@ export function pigLatin(inputTranslated) {
         }
     }
 }
+
+module.exports = { pigLatin };
 
