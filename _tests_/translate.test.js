@@ -1,12 +1,10 @@
 const { StatusCodes } = require("http-status-codes");
 const { generate } = require("../handlers/translate.js");
-const RS = require("random-words-and-sentences");
 
 describe("translate", () => {
   test("should return a translated text", async () => {
-    const event = {
-      body: JSON.stringify({ text: "testing" }),
-    };
+    const event = { body: JSON.stringify({ text: "testing" }) };
+
     const result = await generate(event);
 
     expect(result.statusCode).toBe(StatusCodes.OK);
@@ -15,9 +13,8 @@ describe("translate", () => {
   });
 
   test("missing text", async () => {
-    const event = {
-      body: JSON.stringify({}),
-    };
+    const event = { body: JSON.stringify({}) };
+
     const result = await generate(event);
 
     expect(result.statusCode).toBe(StatusCodes.BAD_REQUEST);
