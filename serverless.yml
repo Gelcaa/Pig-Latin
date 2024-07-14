@@ -3,6 +3,12 @@ service: sls-offline
 provider:
   name: aws
   runtime: nodejs18.x
+  environment:
+    DB_HOST: ${.env:DB_HOST}
+    DB_USER: ${.env:DB_USER}
+    DB_PASSWORD: ${.env:DB_PASSWORD}
+    DB_NAME: ${.env:DB_NAME}
+    DB_PORT: ${.env:DB_PORT}
 
 functions:
   randomSentence:
@@ -21,4 +27,5 @@ functions:
           cors: true
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-offline
