@@ -4,8 +4,9 @@ const db = require("../db/db");
 
 module.exports.generate = async (event) => {
   try {
-    const inputText = JSON.parse(event.body).text;
-    const translatedText = inputText
+    const inputText = JSON.parse(event.body).original_text;
+
+    const translation_text = inputText
       .toLowerCase()
       .split(" ")
       .map((inputTranslated) => pigLatin(inputTranslated))
@@ -13,12 +14,12 @@ module.exports.generate = async (event) => {
 
     await db("translations").insert({
       original_text: inputText,
-      translation_text: translatedText,
+      translation_text: translation_text,
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ translatedText }),
+      body: JSON.stringify({ translation_text }),
       headers: {
         "Content-Type": "application/json",
       },
